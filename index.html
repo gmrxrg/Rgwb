@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Yully ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #ff4e88, #ff99cc, #ff1e56, #ff6ec7);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  animation: fadeIn 2s ease;
+  z-index: 10;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  background: white;
+  color: #ff1e56;
+  transition: 0.3s;
+  box-shadow: 0 0 15px #fff;
+  animation: pulse 2s infinite;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #fff; }
+  50% { box-shadow: 0 0 25px #ff1e56; }
+  100% { box-shadow: 0 0 10px #fff; }
+}
+
+.message {
+  margin-top: 20px;
+  display: none;
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-line;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.heart {
+  position: absolute;
+  bottom: -5vh;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Hey Yully ❤️ here my first project presented for you😅</h1>
+  <p>I made something small for you...
+  just open and scroll within the card</p>
+  <button id="openBtn" onclick="showLove()">Open 💌</button>
+  <div class="message" id="loveMessage"></div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="17. The Weeknd - Die For You.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const text = `
+Mi amor🥰,
+
+Somewhere along the way,
+like its been like 10 to 11 months.. since we met
+my heart chose you...
+u lil troublemaker 😊.
+
+i ain’t jokin.
+This isn’t pressure.
+
+It’s just something I’ve realized quietly.
+
+Happy V-day😊 Mi amor
+I love you sm ❤️❤️❤️
+and 4rvr
+know that from the moment I fell for you, 
+my heart chose you and never changed its mind.
+
+
+But… I need somethin’ From you 👉👈
+
+I hope that u have the same feelings for me❤️
+I want you to join dis love story and make this story a whole lot brighter… Ofc  wit me 💞
+Not like the temporary one 
+i want you like to the ♾️
+
+
+If you’re down, hit me wit a   YES  on tg 😎
+pls.
+
+And I hope you’re impressed With the small website I made✨️
+specially 4 you 😘😘
+
+Heart sent successfully ❤️
+.
+.
+.
+.
+`;
+
+function showLove() {
+  const message = document.getElementById("loveMessage");
+  const music = document.getElementById("bgMusic");
+  const btn = document.getElementById("openBtn");
+
+  // Hide the button after clicking
+  btn.style.display = "none";
+  message.style.display = "block";
+  
+  // Play music
+  music.play();
+  
+  let i = 0;
+  message.innerHTML = "";
+
+  function typing() {
+    if (i < text.length) {
+      message.innerHTML += text.charAt(i);
+      i++;
+      let delay = Math.random() * 100 + 20; 
+      setTimeout(typing, delay);
+    }
+  }
+
+  typing();
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 300);
+} 
+</script>
+
+</body>
+</html>
